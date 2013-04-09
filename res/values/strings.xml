@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Гимны Надежды</string>
+    <string name="title_activity_main"></string>
+    <string name="title_activity_menu"></string>
+    <string name="search_box_hint">Поиск</string>
+    <string name="scores">Ноты</string>
+    <string name="about">О программе</string>
+    <string name="about_description">
+		<![CDATA[
+		For more information visit:<br/><br/><a href="http://hopepsalms.com">HopePsalms.com</a>
+		]]>
+    </string>
+</resources>
