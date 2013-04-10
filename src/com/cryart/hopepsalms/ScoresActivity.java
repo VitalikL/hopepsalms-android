@@ -50,59 +50,59 @@ public class ScoresActivity extends SherlockActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scores);
-		
+
 		Intent intent = getIntent();
 		current_hymn_number = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-		
+
 		// Looking for UI components
 		scores_view = (WebView) findViewById(R.id.scores_view);
 		action_bar_style = (TextView) findViewById(R.id.action_bar_style);
 		loading_icon = (ProgressBar) findViewById(R.id.progressBar1);
-		
-	    // Setting up the back icon
-	    getSupportActionBar().setIcon(R.drawable.ic_navigation_back);
-	    
-        // Hiding title, but showing an icon
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
-        
-        // Enabling home button 
-        getSupportActionBar().setHomeButtonEnabled(true);
-        
-        // Enabling click on this button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        
-        // Trying to make the title in the center
-        // by adjusting right side
-        action_bar_style.setPadding(0, 0, 80, 0);
-        
-        // Setting the title
-        action_bar_style.setText("№ "+current_hymn_number);
-        
-        // Configuring WebView to be pretty
-	    scores_view.getSettings().setLoadWithOverviewMode(true);
-        scores_view.getSettings().setUseWideViewPort(true);
-        scores_view.getSettings().setJavaScriptEnabled(true);
-        scores_view.getSettings().setBuiltInZoomControls(true);
-        scores_view.getSettings().setSupportZoom(true);
-        
-        scores_view.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-            	// Page is loaded, hide the loading spinner icon
-                loading_icon.setVisibility(View.INVISIBLE);
-            }
-        });
-        
-        // Magic happens here
-        scores_view.loadUrl("http://hopepsalms.com/android/"+current_hymn_number);
+
+		// Setting up the back icon
+		getSupportActionBar().setIcon(R.drawable.ic_navigation_back);
+
+		// Hiding title, but showing an icon
+		getSupportActionBar().setDisplayShowTitleEnabled(true);
+
+		// Enabling home button 
+		getSupportActionBar().setHomeButtonEnabled(true);
+
+		// Enabling click on this button
+		getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+		// Trying to make the title in the center
+		// by adjusting right side
+		action_bar_style.setPadding(0, 0, 80, 0);
+
+		// Setting the title
+		action_bar_style.setText("№ "+current_hymn_number);
+
+		// Configuring WebView to be pretty
+		scores_view.getSettings().setLoadWithOverviewMode(true);
+		scores_view.getSettings().setUseWideViewPort(true);
+		scores_view.getSettings().setJavaScriptEnabled(true);
+		scores_view.getSettings().setBuiltInZoomControls(true);
+		scores_view.getSettings().setSupportZoom(true);
+
+		scores_view.setWebViewClient(new WebViewClient() {
+			@Override
+			public void onPageFinished(WebView view, String url) {
+				// Page is loaded, hide the loading spinner icon
+				loading_icon.setVisibility(View.INVISIBLE);
+			}
+		});
+
+		// Magic happens here
+		scores_view.loadUrl("http://hopepsalms.com/android/"+current_hymn_number);
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case android.R.id.home:
-				this.finish();
-				return true;
+		case android.R.id.home:
+			this.finish();
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

@@ -28,32 +28,32 @@ import java.util.List;
 import android.content.Context;
 
 public class SimpleFilterableAdapter<ObjectType> extends FilterableAdapter<ObjectType, String> {
- 
-    public SimpleFilterableAdapter(Context context) {
+
+	public SimpleFilterableAdapter(Context context) {
 		super(context);
 	}
-    
-    public SimpleFilterableAdapter(Context context, int resourceId) {
-        super(context, resourceId, 0, null);
-    }
-    
-    public SimpleFilterableAdapter(Context context, List<ObjectType> objects) {
-        super(context, 0, 0, objects);
-    }
-    
-    public SimpleFilterableAdapter(Context context, int resourceId, List<ObjectType> objects) {
-        super(context, resourceId, 0, objects);
-    }
-    
-    public SimpleFilterableAdapter(Context context, int resourceId, int textResourceId, List<ObjectType> objects) {
-    	super(context, resourceId, textResourceId, objects);
-    }
+
+	public SimpleFilterableAdapter(Context context, int resourceId) {
+		super(context, resourceId, 0, null);
+	}
+
+	public SimpleFilterableAdapter(Context context, List<ObjectType> objects) {
+		super(context, 0, 0, objects);
+	}
+
+	public SimpleFilterableAdapter(Context context, int resourceId, List<ObjectType> objects) {
+		super(context, resourceId, 0, objects);
+	}
+
+	public SimpleFilterableAdapter(Context context, int resourceId, int textResourceId, List<ObjectType> objects) {
+		super(context, resourceId, textResourceId, objects);
+	}
 
 	@Override
-    protected String prepareFilter(CharSequence seq) {
-        return seq.toString().toLowerCase();
-    }
-	
+	protected String prepareFilter(CharSequence seq) {
+		return seq.toString().toLowerCase();
+	}
+
 	/*
 	 * Overriding main filtering function
 	 * 
@@ -63,29 +63,29 @@ public class SimpleFilterableAdapter<ObjectType> extends FilterableAdapter<Objec
 	 * Written for quick lookup of the hymnals
 	 * 
 	 */
-    @Override
-    protected boolean passesFilter(ObjectType object, String constraint) {
-        String repr = object.toString().toLowerCase().trim();
-        
-        // Initial check of the whole
-        // string as the substring
-        // of any item in the object list
-        if (repr.contains(constraint))
-            return true;
-        else {
-        	// If the whole substring is not found
-        	// splitting it into words and trying
-        	// to see if all the words are part of
-        	// any item in the object list
-            final String[] words = constraint.split(" ");
-	        final int wordCount = words.length;
-	        
-	        for (int i = 0; i < wordCount; i++) {
-	        	if (!repr.contains(words[i])){
-	        		return false;
-	        	}
-	        }
-	        return true;
-	    }
-    }
+	@Override
+	protected boolean passesFilter(ObjectType object, String constraint) {
+		String repr = object.toString().toLowerCase().trim();
+
+		// Initial check of the whole
+		// string as the substring
+		// of any item in the object list
+		if (repr.contains(constraint))
+			return true;
+		else {
+			// If the whole substring is not found
+			// splitting it into words and trying
+			// to see if all the words are part of
+			// any item in the object list
+			final String[] words = constraint.split(" ");
+			final int wordCount = words.length;
+
+			for (int i = 0; i < wordCount; i++) {
+				if (!repr.contains(words[i])){
+					return false;
+				}
+			}
+			return true;
+		}
+	}
 }
